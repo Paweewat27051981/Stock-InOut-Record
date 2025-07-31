@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบรายการข้อมูลยอดลงสินค้า - บันทึก</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.2/dist/sweetalert2.min.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" class="active"><i class="fas fa-edit"></i> บันทึกข้อมูล</a>
+        <a href="pivot.html"><i class="fas fa-table"></i> ตาราง Pivot</a>
+        <a href="dashboard.html"><i class="fas fa-chart-line"></i> สรุปข้อมูลประจำวัน</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <i class="fas fa-box-open icon"></i>
+            <h1>ระบบรายการข้อมูลยอดลงสินค้า</h1>
+            <p>บันทึกยอดลงสินค้า</p>
+        </header>
+
+        <form id="itemForm">
+            <div class="form-group">
+                <label for="entryDate"><i class="fas fa-calendar-alt"></i> วันที่:</label>
+                <input type="date" id="entryDate" name="entryDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="branch"><i class="fas fa-map-marker-alt"></i> สาขา:</label>
+                <select id="branch" name="branch" required>
+                    <option value="">-- เลือกสาขา --</option>
+                    <option value="กำแพงเพชร">กำแพงเพชร</option>
+                    <option value="พิษณุโลก">พิษณุโลก</option>
+                    <option value="นครสวรรค์">นครสวรรค์</option>
+                    <option value="เชียงใหม่">เชียงใหม่</option>
+                    <option value="แม่สอด">แม่สอด</option>
+                    <option value="สาย 3">สาย 3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="licensePlate"><i class="fas fa-car"></i> ทะเบียนรถ:</label>
+                <input type="text" id="licensePlate" name="licensePlate" required placeholder="เช่น กข 1234">
+            </div>
+
+            <div class="form-group">
+                <label for="driverName"><i class="fas fa-user"></i> ชื่อคนขับ:</label>
+                <input type="text" id="driverName" name="driverName" placeholder="เช่น นายสมชาย">
+            </div>
+
+            <div class="form-group">
+                <label for="jobType"><i class="fas fa-briefcase"></i> ลักษณะงาน:</label>
+                <select id="jobType" name="jobType" required>
+                    <option value="">-- เลือกลักษณะงาน --</option>
+                    <option value="load">โหลดสินค้าขึ้น</option>
+                    <option value="unload">ถ่ายสินค้าลง</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="startTime"><i class="fas fa-clock"></i> เวลาเริ่ม (HH:MM):</label>
+                <input type="time" id="startTime" name="startTime" required>
+            </div>
+
+            <div class="form-group">
+                <label for="endTime"><i class="fas fa-clock"></i> เวลาเสร็จ (HH:MM):</label>
+                <input type="time" id="endTime" name="endTime" required>
+            </div>
+
+            <div class="form-group">
+                <label for="responsiblePerson"><i class="fas fa-user-tie"></i> ผู้รับผิดชอบ:</label>
+                <input type="text" id="responsiblePerson" name="responsiblePerson" placeholder="เช่น คุณสมศรี">
+            </div>
+
+            <div class="form-group">
+                <label for="customerCompany"><i class="fas fa-building"></i> บริษัทลูกค้า:</label>
+                <input type="text" id="customerCompany" name="customerCompany" placeholder="เช่น บจก.ไทยจำกัด">
+            </div>
+
+            <div class="form-group">
+                <label for="deliveryLocation"><i class="fas fa-truck-loading"></i> สถานที่จัดส่ง:</label>
+                <select id="deliveryLocation" name="deliveryLocation" required>
+                    <option value="">-- เลือกสถานที่จัดส่ง --</option>
+                    <option value="สาขา">สาขา</option>
+                    <option value="ส่งตรงร้าน (direct)">ส่งตรงร้าน (direct)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="destinationStore"><i class="fas fa-store"></i> ร้านปลายทาง:</label>
+                <input type="text" id="destinationStore" name="destinationStore" placeholder="เช่น ร้านค้าทองดี">
+            </div>
+
+            <div class="form-group">
+                <label for="quantity"><i class="fas fa-box"></i> จำนวน (หน่วย):</label>
+                <input type="number" id="quantity" name="quantity" min="0" placeholder="เช่น 100">
+            </div>
+
+            <div class="form-group">
+                <label for="deliveryFee"><i class="fas fa-money-bill-wave"></i> ค่าลงสินค้า (บาท):</label>
+                <input type="number" id="deliveryFee" name="deliveryFee" min="0" step="any" placeholder="เช่น 500.00">
+            </div>
+
+            <div class="form-group">
+                <label for="remarks"><i class="fas fa-comment-alt"></i> หมายเหตุ:</label>
+                <textarea id="remarks" name="remarks" rows="3" placeholder="ข้อความเพิ่มเติม..."></textarea>
+            </div>
+
+            <button type="submit"><i class="fas fa-plus-circle"></i> บันทึกข้อมูล</button>
+        </form>
+
+        <div id="statusMessage" class="message"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.2/dist/sweetalert2.all.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Set default date to today for the date input
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = (today.getMonth() + 1).toString().padStart(2, '0');
+            const day = today.getDate().toString().padStart(2, '0');
+            document.getElementById('entryDate').value = `${year}-${month}-${day}`;
+        });
+    </script>
+</body>
+</html>
